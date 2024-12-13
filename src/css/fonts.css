@@ -1,0 +1,28 @@
+/* OptimusPrincepsSemiBold */
+@font-face {
+    font-family: 'OptimusPrincepsSemiBold';
+    src: url('../fonts/OptimusPrincepsSemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Cinzel */
+@font-face {
+    font-family: 'Cinzel';
+    src: url('../fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* 字体回退方案 */
+:root {
+    --main-font-family: "OptimusPrincepsSemiBold", "Cinzel", Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* 应用字体 */
+body {
+    font-family: var(--main-font-family);
+}

@@ -1,0 +1,506 @@
+{
+  "meta": {
+    "lang": "en",
+    "dir": "ltr",
+    "locale": "en",
+    "language": "English"
+  },
+  "navigation": {
+    "path": "/",
+    "navbar": [
+      {
+        "title": "Home",
+        "url": "/"
+      }
+    ]
+  },
+  "pages": {
+    "index": {
+      "title": "Inside Timer - Free Online Timer For Meditation and Reflection",
+      "description": "Inside Timer is a free online timer for meditation, focus, sleep, reflection and more. A timer that allows you to interact with your inner self. Take some time out from your busy life to relax now!",
+      "hero": {
+        "title": "Inside Timer",
+        "subtitle": "The Next Generation Free-to-Play Action RPG",
+        "content": "In Inside Timer, players will face an ancient evil threatening Wraeclast. The campaign includes seven acts, featuring new areas, towns, and characters, alongside some returning favorites. The game features six new character classes, each with two Ascendancy classes available at launch. Players can expect deep build crafting opportunities as they progress through the game.",
+        "media": {
+          "url": "/assets/hero.jpeg",
+          "alt": "Inside Timer Hero Image",
+          "title": "Inside Timer"
+        },
+        "buttonText": "Get Access Now →"
+      },
+      "about": {
+        "title": "About Inside Timer",
+        "content": [
+          "Inside Timer is a sequel to the original Path of Exile, set 20 years after the original. Initially planned as a graphics update, it evolved into a standalone game to preserve the original gameplay.",
+          "Both games coexist, offering unique mechanics and balanced gameplay. The sequel introduces a fresh six-act campaign, a revamped skill gem system, and enhanced character customization with a redesigned passive skill tree, including dual specialization."
+        ]
+      },
+      "characters": {
+        "title": "Inside Timer Classes",
+        "subtitle": "Explore the 6 character classes in Inside Timer",
+        "content": [{
+          "name": "Warrior",
+          "icon": "/assets/warrior.webp",
+          "intro": "The Warrior in Inside Timer pounds the ground with big, chunky attacks and can shrug off the hits of smaller enemies with large amounts of armour.",
+          "attributes": "Strength",
+          "weapon": "Swords, Axes, Maces",
+          "strengths": "High physical damage, durable, straightforward gameplay.",
+          "weaknesses": "Struggles in ranged encounters, limited area of effect (AoE) abilities.",
+          "ascendancies": [
+            {
+              "name": "Titan",
+              "description": "The Titan focuses on stuns, slams, and beefy defence. Call upon your ancestors to boost your slams. Push your enemies to the ground. Shrug off any attack.",
+              "media": {
+                "url": "/assets/titan.jpg",
+                "alt": "Inside Timer Titan",
+                "title": "Titan"
+              }
+            },
+            {
+              "name": "Warbringer",
+              "description": "This fearsome frontline fighter conjures ancestral spirits to pummel his foes and has a voice so powerful his Warcries can detonate his fallen enemies.",
+              "media": {
+                "url": "/assets/warbringer.jpg",
+                "alt": "Inside Timer Warbringer",
+                "title": "Warbringer"
+              }
+            }
+          ],
+          "media": {
+            "url": "/assets/warrior.jpg",
+            "alt": "Inside Timer Warrior Class",
+            "title": "Warrior"
+          }
+        },
+        {
+          "name": "Sorceress",
+          "icon": "/assets/sorceress.webp",
+          "intro": "The Sorceress bends the elements to her will, using them to unleash devastation on her foes. This classic spellcaster weaves a flurry of elemental magic from afar.",
+          "attributes": "Intelligence",
+          "weapon": "Staves and Spellcasting",
+          "strengths": "Powerful spellcasting abilities, high elemental damage.",
+          "weaknesses": "Fragile in close combat situations.",
+          "ascendancies": [
+            {
+              "name": "Stormweaver",
+              "description": "Become a master of the elements who can cast faster, hit harder, and chill and shock enemies en masse. The Stormweaver can even conjure devastating Elemental Storms.",
+              "media": {
+                "url": "/assets/stormweaver.jpg",
+                "alt": "Inside Timer Stormweaver",
+                "title": "Stormweaver"
+              }
+            },
+            {
+              "name": "Chronomancer",
+              "description": "The Chronomancer wields powerful temporal magic that can reset cooldowns, slow enemies in her presence, and even freeze time itself.",
+              "media": {
+                "url": "/assets/chronomancer.jpg",
+                "alt": "Inside Timer Chronomancer",
+                "title": "Chronomancer"
+              }
+            }
+          ],
+          "media": {
+            "url": "/assets/sorceress.jpg",
+            "alt": "Inside Timer Sorceress Class",
+            "title": "Sorceress"
+          }
+        },
+        {
+          "name": "Ranger",
+          "icon": "/assets/ranger.webp",
+          "intro": "The Ranger class in Inside Timer is quick, but deadly, peppering her enemies with arrows and then vaulting away before they have a chance to reach her.",
+          "attributes": "Dexterity",
+          "weapon": "Bows",
+          "strengths": "High mobility and evasion, excels in ranged combat.",
+          "weaknesses": "Lower health pool compared to strength-based classes.",
+          "ascendancies": [
+            {
+              "name": "Deadeye",
+              "description": "This expert marksman can take down foes with style. She moves as fast as the wind, and can nock additional arrows with every draw.",
+              "media": {
+                "url": "/assets/deadeye.jpg",
+                "alt": "Inside Timer Deadeye",
+                "title": "Deadeye"
+              }
+            },
+            {
+              "name": "Pathfinder",
+              "description": "Pathfinder is a master of flasks and poison. She can turn mana potions into chemical weapons, and stack poisons to her heart's content."
+            }
+          ],
+          "media": {
+            "url": "/assets/ranger.jpg",
+            "alt": "Inside Timer Ranger Class",
+            "title": "Ranger"
+          }
+        },
+        {
+          "name": "Monk",
+          "icon": "/assets/monk.webp",
+          "intro": "The Monk is a fast and furious melee fighter. He dashes in and out of combat, and has mechanics that involve building up and keeping momentum.",
+          "attributes": "Strength/Dexterity",
+          "weapon": "Quarterstaves",
+          "strengths": "Agile melee combat with a focus on speed and precision.",
+          "weaknesses": "May lack raw damage compared to dedicated melee classes.",
+          "ascendancies": [
+            {
+              "name": "Invoker",
+              "description": "The Invoker wields the elements with ease and can use that power to become an Elemental Avatar. The Invoker is also a master of the Spirit allowing him to use many abilities without lifting a finger.",
+              "media": {
+                "url": "/assets/invoker.jpg",
+                "alt": "Inside Timer Invoker",
+                "title": "Invoker"
+              }
+            },
+            {
+              "name": "Acolyte of Chayula",
+              "description": "The Acolyte of Chayula exchanges mastery of Spirit for Darkness, a resource that can be utilized to both absorb and deal damage. Summoning power from the Breach, he trades elemental affinity for Chaos.",
+              "media": {
+                "url": "/assets/acolyte-of-chayula.jpg",
+                "alt": "Inside Timer Acolyte of Chayula",
+                "title": "Acolyte of Chayula"
+              }
+            }
+          ],
+          "media": {
+            "url": "/assets/monk.jpg",
+            "alt": "Inside Timer Monk Class",
+            "title": "Monk"
+          }
+        },
+        {
+          "name": "Mercenary",
+          "icon": "/assets/mercenary.webp",
+          "intro": "The Mercenary wields a crossbow that can be loaded with different ammo types, offering versatility, power, and mobility. He also has options to combo abilities together to devastating effect.",
+          "attributes": "Dexterity/Intelligence",
+          "weapon": "Crossbows",
+          "strengths": "Versatile ranged combat with unique mechanics resembling top-down shooters.",
+          "weaknesses": "Requires frequent reloading; can have downtime during battles.",
+          "ascendancies": [
+            {
+              "name": "Witchhunter",
+              "description": "The Witchhunter specialises in taking down the most deadly of foes. With extra defences against magic, and the ability to break the concentration of his enemies, he is perfectly suited for slaughtering spellcasters.",
+              "media": {
+                "url": "/assets/witchhunter.jpg",
+                "alt": "Inside Timer Witchhunter",
+                "title": "Witchhunter"
+              }
+            },
+            {
+              "name": "Gemling Legionnaire",
+              "description": "Enhance your abilities by embedding Gems directly into your flesh. The Gemling Legionnaire can use more skills than any other class, and the more he uses, the more powerful he becomes.",
+              "media": {
+                "url": "/assets/gemling-legionnaire.jpg",
+                "alt": "Inside Timer Gemling Legionnaire",
+                "title": "Gemling Legionnaire"
+              }
+            }
+          ],
+          "media": {
+            "url": "/assets/mercenary.jpg",
+            "alt": "Inside Timer Mercenary Class",
+            "title": "Mercenary"
+          }
+        },
+        {
+          "name": "Witch",
+          "icon": "/assets/witch.webp",
+          "intro": "Death and decay are the Witch's weapons of choice. She can call forth hordes of undead minions to fight for her while casting powerful chaos spells.",
+          "attributes": "Intelligence",
+          "weapon": "Minions and Spellcasting",
+          "strengths": "Strong summoning capabilities and crowd control spells.",
+          "weaknesses": "Vulnerable in direct combat; relies on minions for protection.",
+          "ascendancies": [
+            {
+              "name": "Blood Mage",
+              "description": "Become a master of life energy. The Blood Mage uses her own life as a resource to bring destruction to her enemies.",
+              "media": {
+                "url": "/assets/blood-mage.jpg",
+                "alt": "Inside Timer Blood Mage",
+                "title": "Blood Mage"
+              }
+            },
+            {
+              "name": "Infernalist",
+              "description": "Infernalist transcends the need for mana, instead building heat as she casts spells. With an Infernal hound at her side she can even turn into a demon herself.",
+              "media": {
+                "url": "/assets/infernalist.jpg",
+                "alt": "Inside Timer Infernalist",
+                "title": "Infernalist"
+              }
+            }
+          ],
+          "media": {
+            "url": "/assets/witch.jpg",
+            "alt": "Inside Timer Witch Class",
+            "title": "Witch"
+          }
+        }]
+      },
+      "gameplay": {
+        "title": "Dive Into the World of Inside Timer",
+        "subtitle": "Experience enhanced combat mechanics and innovative gameplay systems",
+        "content": [
+          {
+            "title": "Visceral Combat",
+            "content": "Inside Timer emphasizes smooth melee combat, allowing for retargeting during ability animations. This enhances movement freedom and enables players to correct misses during combat, making Inside Timer's combat system truly visceral.",
+            "media": {
+              "url": "/assets/delirium.jpeg",
+              "alt": "Visceral Combat System",
+              "title": "Combat Mechanics"
+            }
+          },
+          {
+            "title": "Ability Cost Mechanics",
+            "content": "In Inside Timer, the resource cost of using abilities is now spread across the full animation time, reducing penalties for canceling abilities mid-animation. This change enhances combat fluidity and allows for more strategic gameplay.",
+            "media": {
+              "url": "/assets/skill-system.jpeg",
+              "alt": "Ability Cost System",
+              "title": "Ability Mechanics"
+            }
+          },
+          {
+            "title": "Dodge Rolling Mechanic",
+            "content": "All characters in Inside Timer have access to a dodge roll that cancels current actions and animations. It allows players to avoid projectiles and strikes but does not increase movement speed. Dodge rolling is crucial for evasion during boss fights.",
+            "media": {
+              "url": "/assets/ritual.jpeg",
+              "alt": "Dodge Rolling System",
+              "title": "Dodge Mechanics"
+            }
+          },
+          {
+            "title": "Accuracy Rating",
+            "content": "In Inside Timer, accuracy rating determines the hit chance of an attack, which is influenced by character gear and the passive skill tree. Monsters' evasion is based on their level and modifiers, and specific mechanics can bypass accuracy requirements.",
+            "media": {
+              "url": "/assets/expedition.jpeg",
+              "alt": "Accuracy Rating System",
+              "title": "Accuracy Mechanics"
+            }
+          },
+          {
+            "title": "Spirit Resource",
+            "content": "Inside Timer introduces a new resource called Spirit, which is used for reservation skills and maintaining permanent minions. Spirit comes primarily from equipment modifiers and the passive skill tree.",
+            "media": {
+              "url": "/assets/sekhemas.jpeg",
+              "alt": "Spirit Resource System",
+              "title": "Spirit Mechanics"
+            }
+          },
+          {
+            "title": "Leech Mechanic",
+            "content": "The leech system in Inside Timer has been simplified, with two main modifiers: damage dealt percentage and leech resistance on monsters. This balances character damage growth against monster resistance.",
+            "media": {
+              "url": "/assets/uber.jpeg",
+              "alt": "Leech System",
+              "title": "Leech Mechanics"
+            }
+          },
+          {
+            "title": "Energy Shield Recovery",
+            "content": "In Inside Timer, energy shield recovers at a rate of 33.3% per second after four seconds without taking damage. Poison and bleeding damage bypass energy shield, hitting life directly.",
+            "media": {
+              "url": "/assets/trial-of-the-chaos-god.jpeg",
+              "alt": "Energy Shield System",
+              "title": "Shield Mechanics"
+            }
+          }
+        ]
+      },
+      "ingame": {
+        "title": "Explore More Fun Features of Inside Timer",
+        "subtitle": "Discover the extensive features that await you",
+        "content": [
+          {
+            "title": "Skill Gem System Overhaul",
+            "content": "The skill gem system has been completely reworked. Skill gems are now linked directly to characters rather than gear, allowing support gems to be attached directly to skill gems, which simplifies build diversity."
+          },
+          {
+            "title": "New Weapon Types",
+            "content": "Inside Timer introduces new weapon types such as spears, crossbows, and a hybrid ranged/melee spear, enhancing build customization options in the game."
+          },
+          {
+            "title": "Unique Boss Encounters",
+            "content": "Inside Timer features over 100 unique bosses, each with specialized maps and revamped fight mechanics that require critical thinking and skillful movement from players."
+          },
+          {
+            "title": "Cross-Play and Cross-Progression",
+            "content": "Inside Timer supports local couch co-op, cross-play, and cross-progression across different platforms, allowing players to use the same character on various consoles or PCs."
+          },
+          {
+            "title": "Dynamic Environment Interactions",
+            "content": "Players must navigate skillfully through boss stages using the new dodge mechanic while avoiding attacks, favoring precise movements over simple gear checks."
+          },
+          {
+            "title": "Enhanced Visuals and Animations",
+            "content": "Combat animations have been improved to create a more fluid and responsive feel, making each weapon feel distinct in terms of functionality during battles."
+          }
+        ]
+      },
+      "reviews": {
+        "title": "What Players Say About Inside Timer",
+        "subtitle": "What players and critics are saying",
+        "content": [
+          {
+            "name": "Game Connoisseur",
+            "role": "Veteran Player",
+            "content": "Inside Timer isn't just an excellent game; it's a groundbreaking achievement. It builds upon its predecessor, setting a new standard for action RPGs."
+          },
+          {
+            "name": "RPG Enthusiast",
+            "role": "Gaming Blogger",
+            "content": "The core gameplay feels both familiar and refreshingly new. Where Inside Timer truly shines is in the depth and breadth of its content."
+          },
+          {
+            "name": "Skill Tree Expert",
+            "role": "Game Strategy Analyst",
+            "content": "Its famous massive skill tree and labyrinthine maps elevate the gaming experience to a scale few games dare to attempt."
+          },
+          {
+            "name": "Sound Aficionado",
+            "role": "Multimedia Critic",
+            "content": "The voice acting, music, and updated character models are all outstanding, giving a fresh feel to Inside Timer."
+          },
+          {
+            "name": "Efficiency Player",
+            "role": "Game Tester",
+            "content": "Inside Timer has added some quality of life improvements, like being able to summon quest NPCs directly instead of having to return to town to talk to them."
+          },
+          {
+            "name": "Content Creator",
+            "role": "Game Streamer",
+            "content": "The main storyline of Inside Timer takes about 35 to 40 hours, but there's a ton of endgame content after that... it feels like three games in one."
+          }
+        ]
+      },
+      "faq": {
+        "title": "Inside Timer FAQs",
+        "subtitle": "Get answers to common questions about Inside Timer",
+        "content": [
+          {
+            "question": "When does Inside Timer Early Access start?",
+            "answer": "Inside Timer launches in Early Access on December 6th at 11am PST (December 7th, 3:00 AM GMT+8) across all supported platforms including PC (standalone, Steam, Epic Games Store), Xbox Series X|S, and PlayStation 5. Note that MacOS support is not available at launch but is planned for the future."
+          },
+          {
+            "question": "How can I join Early Access?",
+            "answer": "You can join Inside Timer Early Access by purchasing one of the new Early Access Supporter Packs. Additionally, players who have previously spent $480 USD on a single platform will automatically receive access."
+          },
+          {
+            "question": "How do you redeem an Early Access key?",
+            "answer": "When you purchase a supporter pack that includes Inside Timer Early Access, the key is automatically redeemed on your account. For example, if you purchase through the website, you'll be able to claim a key for your Steam library."
+          },
+          {
+            "question": "When can I download the game client?",
+            "answer": "The standalone PC client for Inside Timer will be available for pre-download starting December 5th at 5pm PST. Xbox pre-download is already available, and other platforms will follow shortly before launch."
+          },
+          {
+            "question": "What content is included in Early Access?",
+            "answer": "Inside Timer Early Access includes the first three acts of the campaign, the Atlas endgame system, over 50 unique boss encounters, and more than 400 different monster types to challenge."
+          },
+          {
+            "question": "Are Supporter Packs available on consoles?",
+            "answer": "Yes, Inside Timer Early Access Supporter Packs are available on Xbox now, with PlayStation Store availability starting December 6th PST. Console purchases include access to both PoE 1 and PoE 2 content."
+          },
+          {
+            "question": "Will there be microtransactions in Early Access?",
+            "answer": "Yes, Inside Timer will feature a selection of microtransactions from the original game during Early Access. New microtransactions specific to PoE 2 will be added in future updates."
+          },
+          {
+            "question": "Will my Path of Exile 1 microtransactions work in Early Access?",
+            "answer": "Yes, Path of Exile 1 transactions will be ported over to Inside Timer."
+          },
+          {
+            "question": "Will there be wipes during Early Access?",
+            "answer": "No, characters created during this period will be placed in the Inside Timer \"Early Access\" League but will remain separate from the Standard League."
+          },
+          {
+            "question": "Is couch co-op available in Early Access?",
+            "answer": "Yes, you can play Inside Timer in couch co-op mode on a single account right from the start. The second player will be able to create a character on that account."
+          },
+          {
+            "question": "Does Inside Timer feature cross-play?",
+            "answer": "Yes, it supports complete cross-play across different platforms. Including PC, Xbox Series X|S, and PlayStation 5."
+          },
+          {
+            "question": "Is there an offline mode for Inside Timer?",
+            "answer": "No, Inside Timer is strictly an online experience requiring a stable internet connection to play on both PC and consoles."
+          },
+          {
+            "question": "Can I stream or share my Early Access gameplay?",
+            "answer": "Yes! Inside Timer Early Access has no NDA, so you're free to stream, share screenshots, and discuss your experiences with the community."
+          }
+        ]
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy | Inside Timer",
+      "description": "Privacy policy for Inside Timer."
+    },
+    "blogentry": {
+      "title": "Inside Timer Latest Guide",
+      "description": "Explore the comprehensive Inside Timer guide to learn about the game's unique character classes, combat system, new features, and the new campaign storyline.",
+      "subtitle": "Latest Inside Timer Guides",
+      "blogs": [
+        {
+          "name": "Inside Timer Classes Guide",
+          "date": "December 11, 2024",
+          "desc": "Learn about the 6 character classes in Inside Timer, their unique abilities, and how to play them effectively.",
+          "path": "/blog/path-of-exile-2-classes/",
+          "media": {
+            "url": "/assets/classes.jpeg",
+            "alt": "Inside Timer Classes Guide",
+            "title": "Inside Timer Classes Guide"
+          }
+        }
+      ]
+
+    }
+  },
+  "common": {
+    "playNow": "Play Now",
+    "readMore": "Read More",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+    
+  },
+  "cta": {
+    "title": "Get Inside Timer Early Access",
+    "description": "Get Early Access now and prepare for the adventures of Inside Timer!",
+    "button": "Download Now →",
+    "platforms": [
+      {
+        "title": "Steam",
+        "link": "https://store.steampowered.com/app/2694490/Path_of_Exile_2/"
+      },
+      {
+        "title": "Epic Games",
+        "link": "https://store.epicgames.com/en-US/p/path-of-exile-2"
+      },
+      {
+        "title": "PlayStation 5",
+        "link": "https://www.playstation.com/en-us/games/path-of-exile-2/"
+      },
+      {
+        "title": "Xbox Series X|S",
+        "link": "https://www.xbox.com/en-US/games/store/path-of-exile-2/9ND8N4RW5GHX"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "github": "Github",
+    "gitlink": "https://github.com/404daydreamer/path-of-exile-2",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Select Language",
+    "currentLanguage": "English"
+  }
+}
