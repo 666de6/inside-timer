@@ -40,6 +40,12 @@ class Timer {
             interval: 'bell01'
         };
 
+        // Preload audio files
+        this.audioFiles = {};
+        Object.keys(bellSounds).forEach(bell => {
+            this.audioFiles[bell] = new Audio(bellSounds[bell]);
+        });
+
         this.initializeElements();
         this.setupEventListeners();
         this.updateDisplay();
@@ -307,7 +313,13 @@ class Timer {
     }
 
     playSound(type) {
-        const audio = new Audio(`/assets/sounds/${this.sounds[type]}.wav`);
+        const audio = this.audioFiles[this.sounds[type]];
+        
+        if (!audio.paused) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        
         audio.play().catch(error => console.log('Error playing sound:', error));
     }
 
