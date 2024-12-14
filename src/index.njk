@@ -52,12 +52,12 @@ layout: base.njk
         <div class="w-full h-full m-auto bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl p-8 shadow-2xl" id="settingsContainer">
             <!-- Timer Display -->
             <div class="text-center mb-4">
+                {# <p class="text-4xl text-white opacity-80">Inside Timer</p> #}
                 <p class="text-4xl md:text-6xl font-bold text-white mb-4" id="timerDisplay">00:00</p>
-                {# <p class="text-md md:text-xl text-white opacity-80" id="phaseDisplay">Ready</p> #}
             </div>
 
             <!-- Timer Settings -->
-            <div class="space-y-8 mb-4">
+            <div class="space-y-8 mb-8">
                 <!-- Warm Up -->
                 <div class="shadow-lg p-4 rounded-md">
                     <div class="flex items-center justify-between mb-2">
@@ -106,18 +106,18 @@ layout: base.njk
                     <!-- Duration Sound Settings -->
                     <div class="mt-4">
                         <div>
-                            <label class="text-xs text-white opacity-80 font-semibold">Start Sound</label>
+                            <label class="text-xs text-white opacity-80 font-semibold">Starting/Ending Bell</label>
                             <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="startSound">
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell01">Bell 1</button>
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell02">Bell 2</button>
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell03">Bell 3</button>
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell04">Bell 4</button>
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell05">Bell 5</button>
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell06">Bell 6</button>
-                                <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell07">Bell 7</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
+                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
                             </div>
                         </div>
-                        <div class="">
+                        {# <div class="">
                             <label class="text-xs text-white opacity-80 font-semibold">End Sound</label>
                             <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="endSound">
                                 <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell01">Bell 1</button>
@@ -128,7 +128,7 @@ layout: base.njk
                                 <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell06">Bell 6</button>
                                 <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell07">Bell 7</button>
                             </div>
-                        </div>
+                        </div> #}
                     </div>
                 </div>
 
@@ -155,15 +155,15 @@ layout: base.njk
                     </div>
                     <!-- Interval Sound Setting -->
                     <div class="mt-4">
-                        <label class="text-xs text-white opacity-80 font-semibold">Interval Sound</label>
+                        <label class="text-xs text-white opacity-80 font-semibold">Interval Bell</label>
                         <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="intervalSound">
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell01">Bell 1</button>
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell02">Bell 2</button>
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell03">Bell 3</button>
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell04">Bell 4</button>
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell05">Bell 5</button>
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell06">Bell 6</button>
-                            <button class="min-w-20 px-4 py-1 text-xs bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white transition-all" data-sound="bell07">Bell 7</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
+                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
                         </div>
                         
                     </div>
@@ -173,7 +173,7 @@ layout: base.njk
             <!-- Control Buttons -->
             <div class="flex justify-center gap-4">
                 <button id="startButton" 
-                    class="px-8 py-3 bg-[var(--slider-color)] bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-semibold transition-all">
+                    class="px-6 py-3 bg-[var(--slider-color)] hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
                     Start
                 </button>
             </div>
@@ -186,7 +186,7 @@ layout: base.njk
                 <p class="text-6xl md:text-8xl font-bold text-white mb-8" id="timerScreenDisplay">00:00</p>
                 <div class="flex justify-center gap-4">
                     <button id="pauseButton" 
-                        class="px-8 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-semibold transition-all">
+                        class="px-8 py-3 bg-[var(--slider-color)] bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-semibold transition-all">
                         Pause
                     </button>
                     <button id="continueButton" 
