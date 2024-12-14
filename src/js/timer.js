@@ -13,13 +13,13 @@ const themeColors = [
 
 // 音频文件映射
 const bellSounds = {
-    bell01: '/assets/sounds/bell01.wav',
-    bell02: '/assets/sounds/bell02.wav',
-    bell03: '/assets/sounds/bell03.wav',
-    bell04: '/assets/sounds/bell04.wav',
-    bell05: '/assets/sounds/bell05.wav',
-    bell06: '/assets/sounds/bell06.wav',
-    bell07: '/assets/sounds/bell07.wav'
+    bell01: 'https://sounds.insidetimer.com/bell01.wav',
+    bell02: 'https://sounds.insidetimer.com/bell02.wav',
+    bell03: 'https://sounds.insidetimer.com/bell03.wav',
+    bell04: 'https://sounds.insidetimer.com/bell04.wav',
+    bell05: 'https://sounds.insidetimer.com/bell05.wav',
+    bell06: 'https://sounds.insidetimer.com/bell06.wav',
+    bell07: 'https://sounds.insidetimer.com/bell07.wav'
 
 };
 
