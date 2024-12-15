@@ -1,7 +1,7 @@
 {
   "name": "inside-timer",
   "version": "1.0.0",
-  "description": "A timer that allows you to interact with your inner self",
+  "description": "Inside Timer is a timer that allows you to interact with your inner self",
   "scripts": {
     "build": "eleventy",
     "serve": "eleventy --serve",
