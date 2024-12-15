@@ -8,7 +8,7 @@ const themeColors = [
     '#5f94ae',
     '#9be1cd',
     '#62a999',
-    '#86a8b2'
+    '#91b5bf'
 ];
 
 // 音频文件映射
@@ -23,21 +23,30 @@ const bellSounds = {
 
 };
 
+let currentInstance = null;
+
 class Timer {
-    constructor() {
-        this.warmUpTime = 0;
-        this.durationTime = 60;
-        this.intervalTime = 0;
+    constructor(presetData = null) {
+        // 如果存在当前计时器，先停止和重置它
+        if (currentInstance) {
+            currentInstance.reset();
+            currentInstance.removeEventListeners();
+        }
+
+        currentInstance = this;
+
+        this.warmUpTime =  presetData ? presetData.warmUpTime : 0;
+        this.durationTime =  presetData ? presetData.durationTime : 60;
+        this.intervalTime =  presetData ? presetData.intervalTime : 0;
         this.currentTime = 0;
-        this.currentColor = '';
+        this.currentColor = presetData ? presetData.currentColor : '';
         this.isRunning = false;
         this.isPaused = false;
         this.phase = 'ready';
         this.timerInterval = null;
         this.sounds = {
-            start: 'bell01',
-            // end: 'bell01',
-            interval: 'bell01'
+            start: presetData ? presetData.startSound : 'bell01',
+            interval: presetData ? presetData.intervalSound : 'bell01'
         };
 
         // Preload audio files
@@ -46,13 +55,13 @@ class Timer {
             this.audioFiles[bell] = new Audio(bellSounds[bell]);
         });
 
-        this.initializeElements();
+        this.initializeElements(presetData);
         this.setupEventListeners();
+        this.setRandomBackground(presetData);
         this.updateDisplay();
-        this.setRandomBackground();
     }
 
-    initializeElements() {
+    initializeElements(presetData = null) {
         // Timer displays
         this.timerDisplay = document.getElementById('timerDisplay');
         this.timerScreenDisplay = document.getElementById('timerScreenDisplay');
@@ -63,9 +72,16 @@ class Timer {
         this.warmUpValue = document.getElementById('warmUpValue');
         this.durationValue = document.getElementById('durationValue');
         this.intervalValue = document.getElementById('intervalValue');
-        this.warmUpInput = document.getElementById('warmUpTime');
+        this.warmUpInput =  document.getElementById('warmUpTime');
         this.durationInput = document.getElementById('durationTime');
         this.intervalInput = document.getElementById('intervalTime');
+
+        if(presetData) {
+            this.warmUpInput.value = presetData.warmUpTime;
+            this.durationInput.value = presetData.durationTime;
+            this.intervalInput.max = presetData.durationTime;
+            this.intervalInput.value = presetData.intervalTime;
+        }
 
         
         // Time adjustment buttons
@@ -76,6 +92,7 @@ class Timer {
         this.pauseButton = document.getElementById('pauseButton');
         this.continueButton = document.getElementById('continueButton');
         this.resetButton = document.getElementById('resetButton');
+        this.savePresetButton = document.getElementById('savePreset');
 
         // Containers
         this.settingsContainer = document.getElementById('settingsContainer');
@@ -90,26 +107,42 @@ class Timer {
 
     setupEventListeners() {
         // Time adjustment buttons
-        document.getElementById('decreaseWarmUp').addEventListener('click', () => this.adjustTime('warmUp', -5));
-        document.getElementById('increaseWarmUp').addEventListener('click', () => this.adjustTime('warmUp', 5));
-        document.getElementById('decreaseDuration').addEventListener('click', () => this.adjustTime('duration', -30));
-        document.getElementById('increaseDuration').addEventListener('click', () => this.adjustTime('duration', 30));
-        document.getElementById('decreaseInterval').addEventListener('click', () => this.adjustTime('interval', -5));
-        document.getElementById('increaseInterval').addEventListener('click', () => this.adjustTime('interval', 5));
+        this.decreaseWarmUpListener = () => this.adjustTime('warmUp', -5);
+        this.increaseWarmUpListener = () => this.adjustTime('warmUp', 5);
+        this.decreaseDurationListener = () => this.adjustTime('duration', -30);
+        this.increaseDurationListener = () => this.adjustTime('duration', 30);
+        this.decreaseIntervalListener = () => this.adjustTime('interval', -5);
+        this.increaseIntervalListener = () => this.adjustTime('interval', 5);
+
+        document.getElementById('decreaseWarmUp').addEventListener('click', this.decreaseWarmUpListener);
+        document.getElementById('increaseWarmUp').addEventListener('click', this.increaseWarmUpListener);
+        document.getElementById('decreaseDuration').addEventListener('click', this.decreaseDurationListener);
+        document.getElementById('increaseDuration').addEventListener('click', this.increaseDurationListener);
+        document.getElementById('decreaseInterval').addEventListener('click', this.decreaseIntervalListener);
+        document.getElementById('increaseInterval').addEventListener('click', this.increaseIntervalListener);
 
         // Range input listeners
-        this.warmUpInput.addEventListener('input', () => this.updateTime('warmUp'));
-        this.durationInput.addEventListener('input', () => this.updateTime('duration'));
-        this.intervalInput.addEventListener('input', () => this.updateTime('interval'));
+        this.warmUpInputListener = () => this.updateTime('warmUp');
+        this.durationInputListener = () => this.updateTime('duration');
+        this.intervalInputListener = () => this.updateTime('interval');
 
+        this.warmUpInput.addEventListener('input', this.warmUpInputListener);
+        this.durationInput.addEventListener('input', this.durationInputListener);
+        this.intervalInput.addEventListener('input', this.intervalInputListener);
+        
         // Control buttons
-        this.startButton.addEventListener('click', () => this.start());
-        this.pauseButton.addEventListener('click', () => this.pause());
-        this.continueButton.addEventListener('click', () => this.continue());
-        this.resetButton.addEventListener('click', () => this.reset());
+        this.startButtonListener = () => this.start();
+        this.pauseButtonListener = () => this.pause();
+        this.continueButtonListener = () => this.continue();
+        this.resetButtonListener = () => this.reset();
+
+        this.startButton.addEventListener('click', this.startButtonListener);
+        this.pauseButton.addEventListener('click', this.pauseButtonListener);
+        this.continueButton.addEventListener('click', this.continueButtonListener);
+        this.resetButton.addEventListener('click', this.resetButtonListener);
 
         // Sound selects
-        this.startSoundSelect.addEventListener('click', (e) => {
+        this.startSoundSelectListener = (e) => {
             if(e.target.dataset.sound) {
                 this.sounds.start = e.target.dataset.sound;
                 this.playSound('start');
@@ -127,22 +160,10 @@ class Timer {
                     `;
                 }
             });
-            
-        });
-        // this.endSoundSelect.addEventListener('click', (e) => {
-        //     if(e.target.dataset.sound) {
-        //         this.sounds.end = e.target.dataset.sound;
-        //         this.playSound('end');
-        //     }
+        };
+        this.startSoundSelect.addEventListener('click', this.startSoundSelectListener);
 
-        //     this.endSoundSelect.querySelectorAll('button').forEach(button => {
-        //         button.style.backgroundColor = '';
-        //         if(button.dataset.sound === this.sounds.end) {
-        //             button.style.backgroundColor = this.currentColor;
-        //         }
-        //     });
-        // });
-        this.intervalSoundSelect.addEventListener('click', (e) => {
+        this.intervalSoundSelectListener = (e) => {
             if(e.target.dataset.sound) {
                 this.sounds.interval = e.target.dataset.sound;
                 this.playSound('interval');
@@ -160,7 +181,43 @@ class Timer {
                     `;
                 }
             });
-        });
+        };
+        this.intervalSoundSelect.addEventListener('click', this.intervalSoundSelectListener);
+
+        this.savePresetButtonListener = () => {
+            const presetSetting = {
+                warmUpTime: this.warmUpTime,
+                durationTime: this.durationTime,
+                intervalTime: this.intervalTime,
+                startSound: this.sounds.start,
+                intervalSound: this.sounds.interval,
+                currentColor: this.currentColor
+            };
+            addNewPreset(presetSetting);
+        };
+        this.savePresetButton.addEventListener('click', this.savePresetButtonListener);
+    }
+
+    removeEventListeners() {
+        document.getElementById('decreaseWarmUp').removeEventListener('click', this.decreaseWarmUpListener);
+        document.getElementById('increaseWarmUp').removeEventListener('click', this.increaseWarmUpListener);
+        document.getElementById('decreaseDuration').removeEventListener('click', this.decreaseDurationListener);
+        document.getElementById('increaseDuration').removeEventListener('click', this.increaseDurationListener);
+        document.getElementById('decreaseInterval').removeEventListener('click', this.decreaseIntervalListener);
+        document.getElementById('increaseInterval').removeEventListener('click', this.increaseIntervalListener);
+
+        this.warmUpInput.removeEventListener('input', this.warmUpInputListener);
+        this.durationInput.removeEventListener('input', this.durationInputListener);
+        this.intervalInput.removeEventListener('input', this.intervalInputListener);
+
+        this.startButton.removeEventListener('click', this.startButtonListener);
+        this.pauseButton.removeEventListener('click', this.pauseButtonListener);
+        this.continueButton.removeEventListener('click', this.continueButtonListener);
+        this.resetButton.removeEventListener('click', this.resetButtonListener);
+
+        this.startSoundSelect.removeEventListener('click', this.startSoundSelectListener);
+        this.intervalSoundSelect.removeEventListener('click', this.intervalSoundSelectListener);
+        this.savePresetButton.removeEventListener('click', this.savePresetButtonListener);
     }
 
     formatTime(seconds) {
@@ -205,7 +262,7 @@ class Timer {
             } else if (type === 'duration') {
                 percentage = ((value - min) / (max - min)) * 100;
             } else if (type === 'interval') {
-                percentage = ((value - min) / (this.durationTime - min)) * 100;
+                percentage = (value / max) * 100;
             }
 
             button.style.background = `linear-gradient(to right, ${this.currentColor} 0%, ${this.currentColor} ${percentage}%, rgba(255, 255, 255, 0.2) ${percentage}%, rgba(255, 255, 255, 0.2) 100%)`;
@@ -238,6 +295,9 @@ class Timer {
     }
 
     start() {
+        console.log('Start', this.warmUpTime, this.durationTime, this.intervalTime);
+        document.getElementById('menu-toggle').classList.add('hidden');
+
         this.isRunning = true;
         this.isPaused = false;
         this.settingsContainer.classList.add('hidden');
@@ -308,6 +368,7 @@ class Timer {
     }
 
     reset() {
+        console.log('Reset');
         this.isRunning = false;
         this.isPaused = false;
         this.phase = 'ready';
@@ -319,9 +380,15 @@ class Timer {
         this.pauseButton.classList.remove('hidden');
         this.continueButton.classList.add('hidden');
         this.resetButton.classList.add('hidden');
+        document.getElementById('menu-toggle').classList.remove('hidden');
         
         this.updateDisplay();
         // this.setRandomBackground();
+
+        // 如果当前重置的是最后一个实例，则清除全局引用
+        // if (currentInstance === this) {
+        //     currentInstance = null;
+        // }
     }
 
     playSound(type) {
@@ -335,33 +402,37 @@ class Timer {
         audio.play().catch(error => console.log('Error playing sound:', error));
     }
 
-    setRandomBackground() {
-        // if (this.currentColor) {
-        //     this.mainContainer.style.background = this.currentColor;
-        // }
-        const newColor = themeColors[Math.floor(Math.random() * themeColors.length)];
-        // this.mainContainer.style.background = newColor;
-        this.currentColor = newColor;
-        this.mainContainer.style.setProperty('--slider-color', this.currentColor);
-        // default sound
+    setRandomBackground(presetData = null) {
+        // set random background
+        this.currentColor = presetData ? presetData.currentColor : themeColors[Math.floor(Math.random() * themeColors.length)];
+        document.documentElement.style.setProperty('--slider-color', this.currentColor);
+
+        // set default sound
         this.startSoundSelect.querySelectorAll('button').forEach(button => {
-            button.style.backgroundColor = '';
-            if(button.dataset.sound === this.sounds.start) {
-                button.style.backgroundColor = this.currentColor;
+            const currentSound = button.dataset.sound.replace('0', ' ');
+            button.innerHTML = currentSound.charAt(0).toUpperCase() + currentSound.slice(1);
+            const sound = presetData ? presetData.startSound : this.sounds.start;
+            if(button.dataset.sound === sound) {
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path d="M5.85 3.5a.75.75 0 0 0-1.117-1 9.719 9.719 0 0 0-2.348 4.876.75.75 0 0 0 1.479.248A8.219 8.219 0 0 1 5.85 3.5ZM19.267 2.5a.75.75 0 1 0-1.118 1 8.22 8.22 0 0 1 1.987 4.124.75.75 0 0 0 1.48-.248A9.72 9.72 0 0 0 19.266 2.5Z" />
+                    <path fill-rule="evenodd" d="M12 2.25A6.75 6.75 0 0 0 5.25 9v.75a8.217 8.217 0 0 1-2.119 5.52.75.75 0 0 0 .298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 1 0 7.48 0 24.583 24.583 0 0 0 4.83-1.244.75.75 0 0 0 .298-1.205 8.217 8.217 0 0 1-2.118-5.52V9A6.75 6.75 0 0 0 12 2.25ZM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 0 0 4.496 0l.002.1a2.25 2.25 0 1 1-4.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                `;
             }
         });
 
-        // this.endSoundSelect.querySelectorAll('button').forEach(button => {
-        //     button.style.backgroundColor = '';
-        //     if(button.dataset.sound === this.sounds.end) {
-        //         button.style.backgroundColor = this.currentColor;
-        //     }
-        // });
-
         this.intervalSoundSelect.querySelectorAll('button').forEach(button => {
-            button.style.backgroundColor = '';
-            if(button.dataset.sound === this.sounds.interval) {
-                button.style.backgroundColor = this.currentColor;
+            const currentSound = button.dataset.sound.replace('0', ' ');
+            button.innerHTML = currentSound.charAt(0).toUpperCase() + currentSound.slice(1);
+            const sound = presetData ? presetData.intervalSound : this.sounds.interval;
+            if(button.dataset.sound === sound) {
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path d="M5.85 3.5a.75.75 0 0 0-1.117-1 9.719 9.719 0 0 0-2.348 4.876.75.75 0 0 0 1.479.248A8.219 8.219 0 0 1 5.85 3.5ZM19.267 2.5a.75.75 0 1 0-1.118 1 8.22 8.22 0 0 1 1.987 4.124.75.75 0 0 0 1.48-.248A9.72 9.72 0 0 0 19.266 2.5Z" />
+                    <path fill-rule="evenodd" d="M12 2.25A6.75 6.75 0 0 0 5.25 9v.75a8.217 8.217 0 0 1-2.119 5.52.75.75 0 0 0 .298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 1 0 7.48 0 24.583 24.583 0 0 0 4.83-1.244.75.75 0 0 0 .298-1.205 8.217 8.217 0 0 1-2.118-5.52V9A6.75 6.75 0 0 0 12 2.25ZM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 0 0 4.496 0l.002.1a2.25 2.25 0 1 1-4.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                `;
             }
         });
     }
@@ -369,5 +440,5 @@ class Timer {
 
 // Initialize timer when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new Timer();
+    currentInstance = new Timer();
 });

@@ -46,23 +46,23 @@ layout: base.njk
         cursor: pointer;
     }
 </style>
-<main class="min-h-screen bg-[var(--slider-color)] transition-colors duration-500 px-4 md:px-10 text-md font-sans flex justify-center items-center" id="mainContainer">
-    <div class="w-full max-w-[800px] mx-auto">
+<main class="w-screen h-screen bg-[var(--slider-color)] transition-colors duration-500 px-4 md:px-10 py-4 md:pt-16 text-md font-sans flex justify-center items-center" id="mainContainer">
+    <div class="w-full h-full overflow-hidden max-w-[800px] max-h-[800px] mx-auto">
         <!-- Timer Container -->
-        <div class="w-full h-full m-auto bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl p-8 shadow-2xl" id="settingsContainer">
+        <div class="w-full h-full m-auto bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl px-4 py-8 shadow-2xl flex flex-col justify-around" id="settingsContainer">
             <!-- Timer Display -->
-            <div class="text-center mb-4">
+            <div class="text-center">
                 {# <p class="text-4xl text-white opacity-80">Inside Timer</p> #}
-                <p class="text-4xl md:text-6xl font-bold text-white mb-4" id="timerDisplay">00:00</p>
+                <p class="text-6xl md:text-8xl font-bold text-white" id="timerDisplay">00:00</p>
             </div>
 
             <!-- Timer Settings -->
-            <div class="space-y-8 mb-8">
+            <div class="space-y-1 md:space-y-8 mb-4">
                 <!-- Warm Up -->
                 <div class="shadow-lg p-4 rounded-md">
                     <div class="flex items-center justify-between mb-2">
-                        <h3 class="text-md md:text-lg font-semibold text-white">Warm Up</h3>
-                        <span class="text-white" id="warmUpValue">0s</span>
+                        <h2 class="text-sm md:text-lg font-semibold text-white">Warm Up</h2>
+                        <span class="text-[var(--slider-color)]" id="warmUpValue">0s</span>
                     </div>
                     <div class="flex items-center gap-4">
                         <button class="text-white opacity-80 hover:opacity-100" id="decreaseWarmUp">
@@ -85,8 +85,8 @@ layout: base.njk
                 <!-- Duration -->
                 <div class="shadow-lg p-4 rounded-md">
                     <div class="flex items-center justify-between mb-2">
-                        <h3 class="text-md md:text-lg font-semibold text-white">Duration</h3>
-                        <span class="text-white" id="durationValue">1min</span>
+                        <h2 class="text-sm md:text-lg font-semibold text-white">Duration</h2>
+                        <span class="text-[var(--slider-color)]" id="durationValue">1min</span>
                     </div>
                     <div class="flex items-center gap-4">
                         <button class="text-white opacity-80 hover:opacity-100" id="decreaseDuration">
@@ -108,13 +108,13 @@ layout: base.njk
                         <div>
                             <label class="text-xs text-white opacity-80 font-semibold">Starting/Ending Bell</label>
                             <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="startSound">
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
-                                <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
+                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
                             </div>
                         </div>
                         {# <div class="">
@@ -135,8 +135,8 @@ layout: base.njk
                 <!-- Interval -->
                 <div class="shadow-lg p-4 rounded-md">
                     <div class="flex items-center justify-between mb-2">
-                        <h3 class="text-md md:text-lg font-semibold text-white">Interval Repeat</h3>
-                        <span class="text-white" id="intervalValue">0s</span>
+                        <h2 class="text-sm md:text-lg font-semibold text-white">Interval Repeat</h2>
+                        <span class="text-[var(--slider-color)]" id="intervalValue">0s</span>
                     </div>
                     <div class="flex items-center gap-4">
                         <button class="text-white opacity-80 hover:opacity-100" id="decreaseInterval">
@@ -157,13 +157,13 @@ layout: base.njk
                     <div class="mt-4">
                         <label class="text-xs text-white opacity-80 font-semibold">Interval Bell</label>
                         <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="intervalSound">
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
-                            <button class="w-14 h-14 flex-shrink-0 text-xs bg-gradient-to-br from-[#86a8b2] to-[#86a8b2] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
+                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
                         </div>
                         
                     </div>
@@ -173,8 +173,13 @@ layout: base.njk
             <!-- Control Buttons -->
             <div class="flex justify-center gap-4">
                 <button id="startButton" 
-                    class="px-6 py-3 bg-[var(--slider-color)] hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
+                    class="px-4 py-2 bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
                     Start
+                </button>
+                 
+                <button id="savePreset" 
+                    class="px-4 py-2 border-4 border-[var(--slider-color)] bg-white bg-opacity-80 hover:scale-110 duration-300 rounded-full text-[var(--slider-color)] font-semibold transition-all">
+                    Save
                 </button>
             </div>
         </div>
@@ -182,19 +187,19 @@ layout: base.njk
         <!-- Timer Screen (Hidden by default) -->
         <div id="timerScreen" class="hidden w-full h-full m-auto bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl p-8 shadow-2xl flex flex-col justify-center items-center">
             <div class="text-center w-full">
-                <p class="text-4xl text-white opacity-80 mb-8" id="timerScreenPhase">Meditation</p>
+                <p class="text-4xl text-[var(--slider-color)] opacity-80 mb-8" id="timerScreenPhase">Meditation</p>
                 <p class="text-6xl md:text-8xl font-bold text-white mb-8" id="timerScreenDisplay">00:00</p>
                 <div class="flex justify-center gap-4">
                     <button id="pauseButton" 
-                        class="px-8 py-3 bg-[var(--slider-color)] bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-semibold transition-all">
+                        class="px-8 py-3 bg-[var(--slider-color)] bg-opacity-20 hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
                         Pause
                     </button>
                     <button id="continueButton" 
-                        class="hidden px-8 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-semibold transition-all">
+                        class="hidden px-8 py-3 bg-white bg-opacity-20 hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
                         Continue
                     </button>
                     <button id="resetButton" 
-                        class="hidden px-8 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-semibold transition-all">
+                        class="hidden px-8 py-3 bg-white bg-opacity-20 hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
                         Finish
                     </button>
                 </div>

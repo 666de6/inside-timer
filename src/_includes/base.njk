@@ -68,9 +68,8 @@
       theme: {
         extend: {
           colors: {
-            green: '#131b24',
+            dark: '#454545',
             yellow: '#f7f8f1',
-            red: '#560e10',
             light: '#81966d'
           },
           fontFamily: {
@@ -82,65 +81,47 @@
     }
 
   </script>
-  <script>
-    window.translations = {{ i18n | dump | safe }};
-  </script>
 </head>
-<body class="w-full text-yellow font-serif bg-fixed">
-              {# <a href="{{ '/' | localizeUrl(currentLang) }}" alt="Inside Timer" class="absolute top-4 left-4">
-                <img src="/assets/logo.svg" class="w-10"/>
-            </a> #}
-  {# <header class="h-20 flex justify-between items-center py-4 px-4 shadow-md sticky top-0 z-[999] font-opsb">
-    <a href="{{ '/' | localizeUrl(currentLang) }}" alt="Inside Timer">
-        <img src="/assets/logo.svg" class=""/>
-    </a>
-    <div class="flex items-center gap-4">
-      <nav id="nav-menu" class="hidden lg:block">
-        <div class="shadow-md shadow-red bg-green lg:shadow-none flex flex-col fixed z-[9999] top-14 right-4 shadow-md lg:static p-4 text-sm lg:text-md lg:flex-row items-center gap-6 font-bold">
-          {% for item in translations.navigation.navbar %}
-            <a href="{{ item.url | localizeUrl(currentLang) }}" class="nav-link hover:text-light hover:underline hover:decoration-2 hover:underline-offset-8">{{ item.title }}</a>
-          {% endfor %}
-          <!-- Language Dropdown -->
-          <div class="relative">
-            <button id="language-button" class="border border-red text-xs px-2 py-1 flex items-center space-x-1 hover:bg-red hover:bg-opacity-80 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path></svg>
-              <span>{{ translations.languageSwitcher.currentLanguage }}</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div id="language-menu" class="absolute shadow-red shadow-md right-0 mt-2 w-28 lg:w-48 bg-green bg-opacity-80 rounded shadow-lg hidden">
-              
-              {% for lang in ["en", "zh"] %}
-                {% if lang == "en" %}
-                  {% set langPath = "" %}
-                {% else %}
-                  {% set langPath = "/" + lang %}
-                {% endif %}
-                {% if i18n[lang] %}
-                  {% set langName = i18n[lang].meta.language %}
-                {% else %}
-                  {% set langName = lang %}
-                {% endif %}
-                <a href="{{ langPath }}{{ page.url | replace("/" + currentLang + "/", "/") }}"
-                  class="block px-4 py-2 hover:bg-red hover:bg-opacity-100 {% if lang == currentLang %}text-light hover:text-white{% endif %}">
-                  {{ langName }}
-                </a>
-              {% endfor %}
-            </div>
-          </div> 
-        </div>
-      </nav>
-      <button id="menu-toggle" class="lg:hidden p-2">
-        <img src="/assets/hum.svg" class="w-6 h-6" alt="unfold"/>
-      </button>
-     
-    
+<body class="w-full text-yellow font-sans bg-fixed">
+  <button id="menu-toggle" class="fixed top-4 right-4 z-50 bg-dark bg-opacity-50 rounded-full p-2 hover:scale-110 transition-all">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 menu-icon hover:animate-spin">
+      <path fill-rule="evenodd" d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 0 1-.517.608 7.45 7.45 0 0 0-.478.198.798.798 0 0 1-.796-.064l-.453-.324a1.875 1.875 0 0 0-2.416.2l-.243.243a1.875 1.875 0 0 0-.2 2.416l.324.453a.798.798 0 0 1 .064.796 7.448 7.448 0 0 0-.198.478.798.798 0 0 1-.608.517l-.55.092a1.875 1.875 0 0 0-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 0 1-.064.796l-.324.453a1.875 1.875 0 0 0 .2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 0 1 .796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 0 1 .517-.608 7.52 7.52 0 0 0 .478-.198.798.798 0 0 1 .796.064l.453.324a1.875 1.875 0 0 0 2.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 0 1-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 0 0 1.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 0 1-.608-.517 7.507 7.507 0 0 0-.198-.478.798.798 0 0 1 .064-.796l.324-.453a1.875 1.875 0 0 0-.2-2.416l-.243-.243a1.875 1.875 0 0 0-2.416-.2l-.453.324a.798.798 0 0 1-.796.064 7.462 7.462 0 0 0-.478-.198.798.798 0 0 1-.517-.608l-.091-.55a1.875 1.875 0 0 0-1.85-1.566h-.344ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 close-icon hidden">
+      <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+    </svg>
+
+  </button>
+
+  <div id="overlay" class="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-50 z-30 hidden"></div>
+  <div id="drawer" class="fixed top-0 right-0 h-full w-full md:w-96 shadow-2xl shadow-[#91b5bf] bg-yellow bg-opacity-80 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto">
+    <div class="p-8 text-dark">
+      <!-- Add drawer content here -->
+      <h1 class="text-3xl font-bold mb-2 text-dark">Inside Timer</h1>
+      <p class="text-sm opacity-80 mb-4">Inside Timer is a free online timer for meditation, focus, sleep, reflection and more. A timer that allows you to interact with your inner self. Take some time out from your busy life now!</p>
+      {# ko-fi #}
+      <div>
+        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+        <script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'G2G2Y61IB');kofiwidget2.draw();</script> 
+      </div>
+      {# ko-fi #}
+
+      {# presets #}
+      <h2 class="mt-8 text-lg font-bold mb-2">Presets</h2>
+      <p class="mb-4 text-xs opacity-80">Note: Presets are saved in your browser's local storage. If you clear your local storage or use a different browser/device, your presets will be lost. The maximum number of presets is 10.</p>
+      <ul id="presetList" class="space-y-2 text-xs">
+        <!-- Presets will be dynamically added here -->
+      </ul>
+
+      <h2 class="mt-8 text-lg font-bold mb-2">About</h2>
+      <p class="text-sm mb-2 opacity-80">I'm passionate about yoga and meditation, and I've noticed that many timers out there are overly fancy and complicated. As a minimalist, I prefer simplicity and clarity in everything I use. That’s why I created this timer—bringing all the essential features to a single page. This way, you can start timing with the least hassle and the quickest setup.</p>
+      <p class="text-sm mb-2 opacity-80">If you enjoy it, feel free to <button class="underline text-[#ff5a16]" onclick="copyPageUrl()">share it</button> with your friends!</p>
+      <p class="text-sm mb-2 opacity-80">I welcome any feedback or suggestions you may have. You can reach me at <a href="mailto:insidetimeronline@gmail.com" class="underline text-[#ff5a16]">insidetimeronline@gmail.com</a> </p>
 
     </div>
+  </div>
 
-  </header>
-   #}
+  
   {{ content | safe }}
 
   {# <section class="bg-green bg-gradient-to-l from-green via-red to-green" id="cta">
@@ -175,99 +156,163 @@
   </footer> #}
 
   <script>
-    {# document.getElementById('copyright').innerText = new Date().getFullYear() + ''; #}
-    {# document.addEventListener("DOMContentLoaded", function() {
-      const currentUrlHash = window.location.hash;
-      const currentUrlPathname = window.location.pathname;
-      const currentUrl = currentUrlHash ? currentUrlPathname + currentUrlHash : currentUrlPathname;
+    function adjustMainContainerHeight() {
+        const mainContainer = document.getElementById('mainContainer');
+        const viewportHeight = window.innerHeight;
+        mainContainer.style.height = `${viewportHeight}px`;
+    }
 
-      const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('resize', adjustMainContainerHeight);
+    document.addEventListener('DOMContentLoaded', () => {
+      adjustMainContainerHeight();
+      const presetList = document.getElementById('presetList');
+      const savePresetButton = document.getElementById('savePreset');
+      const drawer = document.getElementById('drawer');
 
-      navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        // 检查当前路径是否包含blog，如果是则高亮blog链接
-        if (currentUrlPathname.includes('/blog/') && href.includes('/blogentry/')) {
-          link.classList.add('text-light');
-        }
-        // 其他精确匹配的情况
-        else if (href === currentUrl) {
-          link.classList.add('text-light');
-        }
-      });
-
-      window.addEventListener('hashchange', function() {
-        const currentUrlHash = window.location.hash;
-        const currentUrlPathname = window.location.pathname;
-        const currentUrl = currentUrlHash ? currentUrlPathname + currentUrlHash : currentUrlPathname;
-        
-        navLinks.forEach(link => {
-          link.classList.remove('text-light');
-          const href = link.getAttribute('href');
-          // 检查当前路径是否包含blog，如果是则高亮blog链接
-          if (currentUrlPathname.includes('/blog/') && href === '/blogentry/') {
-            link.classList.add('text-light');
-          }
-          // 其他精确匹配的情况
-          else if (href === currentUrl) {
-            link.classList.add('text-light');
-          }
-        });
-      });
-
-    }); #}
-
-    {# document.getElementById('menu-toggle').addEventListener('click', function() {
-      const navMenu = document.getElementById('nav-menu');
-      navMenu.classList.toggle('hidden');
-    }); #}
-
-    // 语言切换功能
-    {# const langButton = document.getElementById('language-button');
-    const langMenu = document.getElementById('language-menu');
-    let isMenuOpen = false;
-
-    langButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-      isMenuOpen = !isMenuOpen;
-      if (isMenuOpen) {
-        langMenu.classList.remove('hidden');
-      } else {
-        langMenu.classList.add('hidden');
-      }
+      loadPresets();
     });
-
-    // 点击其他地方关闭菜单
-    document.addEventListener('click', function(e) {
-      if (!langMenu.contains(e.target) && !langButton.contains(e.target)) {
-        langMenu.classList.add('hidden');
-        isMenuOpen = false;
+    function loadPresets() {
+      const presets = JSON.parse(localStorage.getItem('timerPresets')) || [];
+      presetList.innerHTML = '';
+      if(presets.length === 0) {
+        presetList.innerHTML = '<p class="text-dark">No presets found.</p>';
+        return;
       }
-    }); #}
+      presets.forEach((preset, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="flex items-center gap-2 text-xs">
+            <button class="delete-preset p-1 bg-dark hover:bg-red-600 text-white rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3">
+                <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <button class="load-preset flex-grow flex items-center justify-between px-3 py-1 bg-white bg-opacity-20 hover:bg-[#72a4f2] rounded-full text-dark transition-colors">
+              <span>${preset.name}</span>
+              <span class="flex items-center gap-2">
+                <span>${formatTime(preset.durationTime)}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </button>
+          </div>
+        `;
+        li.querySelector('.load-preset').addEventListener('click', () => loadPreset(preset));
+        li.querySelector('.delete-preset').addEventListener('click', () => deletePreset(index));
+        presetList.appendChild(li);
+      });
+    }
 
-  function copyPageUrl() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const toast = document.createElement('div');
-      toast.textContent = 'Link copied!';
-      toast.style.cssText = `
-          position: fixed;
-          bottom: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(255, 255, 255, 0.9);
-          color: #000;
-          padding: 8px 16px;
-          border-radius: 4px;
-          z-index: 1000;
+    function deletePreset(index) {
+      const presets = JSON.parse(localStorage.getItem('timerPresets')) || [];
+      presets.splice(index, 1);
+      localStorage.setItem('timerPresets', JSON.stringify(presets));
+      loadPresets();
+    }
+
+    function loadPreset(preset) {
+      toggleDrawer();
+      new Timer(preset);
+    }
+
+
+    function addNewPreset(preset) {
+      toggleDrawer();
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+      <div class="flex items-center justify-between gap-2 text-xs">
+        <input type="text" placeholder="Enter preset name" class="w-full px-3 py-2 bg-dark bg-opacity-20 rounded-full text-dark outline-none">
+        <button class="px-3 py-2 bg-[#72a4f2] text-yellow rounded-full hover:bg-opacity-80">Save</button>
+      </div>
       `;
-      document.body.appendChild(toast);
+      li.querySelector('button').addEventListener('click', (e) => saveNewPreset(e, preset));
+      presetList.insertBefore(li, presetList.firstChild);
+    };
+
+    function saveNewPreset(event, preset) {
+      const li = event.target.closest('li');
+      const input = li.querySelector('input');
+      const name = input.value.trim();
+      if (name) {
+        const presetSetting = {
+          name,
+          warmUpTime: preset.warmUpTime,
+          durationTime: preset.durationTime,
+          intervalTime: preset.intervalTime,
+          startSound: preset.startSound,
+          intervalSound: preset.intervalSound,
+          currentColor: preset.currentColor
+        };
+        let presets = JSON.parse(localStorage.getItem('timerPresets')) || [];
+        presets.unshift(presetSetting);
+        if (presets.length > 10) {
+          presets = presets.slice(0, 10);
+        }
+        localStorage.setItem('timerPresets', JSON.stringify(presets));
+        loadPresets();
+      }
+    }
+    
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer');
+      const menuIcon = document.querySelector('.menu-icon');
+      const closeIcon = document.querySelector('.close-icon');
+      const overlay = document.getElementById('overlay');
       
-      setTimeout(() => {
-          toast.remove();
-      }, 2000);
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
+      drawer.classList.toggle('translate-x-full');
+      overlay.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+
+      if (drawer.classList.contains('translate-x-full')) {
+          const unsavedPreset = presetList.querySelector('input[type="text"]');
+          if (unsavedPreset) {
+              unsavedPreset.closest('li').remove();
+          }
+      }
+
+      document.getElementById('overlay').addEventListener('click', toggleDrawer);
+    };
+
+    // drawer 
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      toggleDrawer();
     });
-  }
+
+
+    function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
+    // copy link
+    function copyPageUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const toast = document.createElement('div');
+        toast.textContent = 'Link copied!';
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 4px;
+            z-index: 100;
+        `;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.remove();
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
   </script>
   <!-- For Analysis -->
   <script defer data-domain="insidetimer.com" src="https://app.pageview.app/js/script.js"></script>
