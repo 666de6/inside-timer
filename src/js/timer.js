@@ -59,6 +59,14 @@ class Timer {
         this.audioFiles = {};
         Object.keys(bellSounds).forEach(bell => {
             this.audioFiles[bell] = new Audio(bellSounds[bell]);
+            const savedVolume = localStorage.getItem('inside-timer-bell-volume');
+            if (savedVolume !== null) {
+                this.audioFiles[bell].volume = savedVolume / 100;
+            } else {
+                // 如果没有保存的值，设置默认值为50
+                localStorage.setItem('inside-timer-bell-volume', 50);
+                this.audioFiles[bell].volume = 0.5;
+            }
         });
 
         this.initializeElements(presetData);

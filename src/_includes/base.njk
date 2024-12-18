@@ -62,7 +62,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="./toastify.min.css"> -->
   <!-- <script type="text/javascript" src="./toastify-js.js"></script> -->
   <script src="/js/tailwindcss.js"></script>
-  <script src="/js/timer.js?v=202412152216""></script>
+  <script src="/js/timer.js?v=202412181810""></script>
   <script>
     tailwind.config = {
       theme: {
@@ -105,6 +105,15 @@
         <script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#72a4f2', 'G2G2Y61IB');kofiwidget2.draw();</script> 
       </div>
       {# ko-fi #}
+
+      <div class="mt-8 flex items-center justify-between mb-2">
+          <h2 class="text-lg font-bold">Volume</h2>
+          <span class="text-[#72a4f2] font-black" id="volumeValue">50%</span>
+      </div>
+      <input type="range" min="0" max="100" value="50" step="1"
+      class="volumeslider w-full h-2 bg-[#72a4f2] bg-opacity-50 rounded-lg appearance-none cursor-pointer"
+      id="volume"
+      />
 
       {# presets #}
       <h2 class="mt-8 text-lg font-bold mb-2">Presets</h2>
@@ -161,16 +170,60 @@
         mainContainer.style.height = `${viewportHeight}px`;
     }
 
-    window.addEventListener('resize', adjustMainContainerHeight);
+
     document.addEventListener('DOMContentLoaded', () => {
       adjustMainContainerHeight();
-      const presetList = document.getElementById('presetList');
-      const savePresetButton = document.getElementById('savePreset');
-      const drawer = document.getElementById('drawer');
-
       loadPresets();
+
+      // set volume
+      const volumeSlider = document.getElementById('volume');
+      const volumeValue = document.getElementById('volumeValue');
+      const menuToggle = document.getElementById('menu-toggle');
+
+      // 从本地存储读取音量值
+      function loadVolume() {
+          const savedVolume = localStorage.getItem('inside-timer-bell-volume');
+          if (savedVolume !== null) {
+              volumeSlider.value = savedVolume;
+              volumeValue.textContent = `${savedVolume}%`;
+          } else {
+              // 如果没有保存的值，设置默认值为50
+              volumeSlider.value = 50;
+              volumeValue.textContent = '50%';
+              localStorage.setItem('inside-timer-bell-volume', 50);
+          }
+      }
+
+      // 保存音量值到本地存储
+      function saveVolume(value) {
+          localStorage.setItem('inside-timer-bell-volume', value);
+
+          Object.keys(currentInstance.audioFiles).forEach(bellAudio => {
+            currentInstance.audioFiles[bellAudio].volume = value / 100;
+        });
+      }
+
+      // 监听滑块变化
+      volumeSlider.addEventListener('input', function() {
+          const value = this.value;
+          volumeValue.textContent = `${value}%`;
+          saveVolume(value);
+      });
+
+      // 页面加载时读取保存的音量值
+      window.addEventListener('load', loadVolume);
+
+      window.addEventListener('resize', adjustMainContainerHeight);
+
+      // drawer toggle
+      menuToggle.addEventListener('click', function() {
+        toggleDrawer();
+      });
+
     });
+
     function loadPresets() {
+      const presetList = document.getElementById('presetList');
       const presets = JSON.parse(localStorage.getItem('timerPresets')) || [];
       presetList.innerHTML = '';
       if(presets.length === 0) {
@@ -274,12 +327,6 @@
 
       document.getElementById('overlay').addEventListener('click', toggleDrawer);
     };
-
-    // drawer 
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      toggleDrawer();
-    });
-
 
     function formatTime(seconds) {
         const hours = Math.floor(seconds / 3600);
