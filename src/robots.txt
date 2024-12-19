@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: //sounds.insidetimer.com/
+
+Sitemap: https://insidetimer.com/sitemap.xml

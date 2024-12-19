@@ -73,8 +73,7 @@
             light: '#81966d'
           },
           fontFamily: {
-            'opsb': ['OptimusPrincepsSemiBold', 'Cinzel', 'Verdana', 'Arial', 'Helvetica', 'sans-serif'],
-            'cinzel': ['Cinzel', 'serif'],
+            'fgr': ['FacultyGlyphic-Regular', 'Verdana', 'Arial', 'Helvetica', 'sans-serif']
           }
         }
       }
@@ -94,11 +93,13 @@
   </button>
 
   <div id="overlay" class="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-50 z-30 hidden"></div>
-  <div id="drawer" class="fixed top-0 right-0 h-full w-full md:w-96 shadow-2xl shadow-[#91b5bf] bg-yellow bg-opacity-80 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto">
-    <div class="p-8 text-dark">
+  
+  <div id="drawer" class="font-fgr fixed top-0 right-0 h-full w-full md:w-96 shadow-2xl shadow-[#91b5bf] bg-yellow bg-opacity-80 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto">
+    <div class="py-10 px-6 text-dark">
       <!-- Add drawer content here -->
-      <h1 class="text-3xl font-bold mb-2 text-dark">Inside Timer</h1>
-      <p class="text-sm opacity-80 mb-4">Inside Timer is a free online timer for meditation, focus, sleep, reflection and more. A timer that allows you to interact with your inner self. Have a peaceful time!</p>
+      <h1 class="text-3xl font-bold text-dark">Inside Timer</h1>
+      <h2 class="text-lg font-bold mb-4 text-dark opacity-80 underline decoration-double decoration-[#72a4f2]">Your Mindful Meditation Companion</h2>
+      <p class="text-sm opacity-80 mb-4 opacity-80">Welcome to Inside Timer, your dedicated meditation timer designed to enhance your mindfulness practice. As a free online meditation timer, Inside Timer stands out by offering a blend of essential features while maintaining simplicity. Whether you're seeking a reliable meditation timer for your daily practice, a focus timer for deep work sessions, or a mindful timer for peaceful reflection, Inside Timer adapts to your needs without unnecessary complexity. No sign-up required, no complicated setup - just pure, mindful moments at your fingertips.</p>
       {# ko-fi #}
       <div>
         <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
@@ -106,32 +107,49 @@
       </div>
       {# ko-fi #}
 
-      <div class="mt-8 flex items-center justify-between mb-2">
-          <h2 class="text-lg font-bold">Volume</h2>
-          <span class="text-[#72a4f2] font-black" id="volumeValue">50%</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <input type="range" min="0" max="100" value="50"
-          class="volumeslider w-full h-2 bg-[#72a4f2] bg-opacity-50 rounded-lg appearance-none cursor-pointer"
-          id="volume">
-        <button id="testVolume" class="text-[#72a4f2] hover:text-[#a0c2f5] transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-          </svg>
-        </button>
+      {# volume #}
+      <div class="mt-20">
+        <h2 class="text-lg font-bold mb-4 underline decoration-double decoration-[#72a4f2]">Settings</h2> 
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="text-md font-bold opacity-80">Volume</h3>
+            <span class="text-md text-[#72a4f2] font-black" id="volumeValue">50%</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <input type="range" min="0" max="100" value="50"
+            class="volumeslider w-full h-2 bg-[#72a4f2] bg-opacity-50 rounded-lg appearance-none cursor-pointer"
+            id="volume">
+          <button id="testVolume" class="text-[#72a4f2] hover:text-[#a0c2f5] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {# presets #}
-      <h2 class="mt-8 text-lg font-bold mb-2">Presets</h2>
-      <p class="mb-4 text-xs opacity-80">Note: Presets are saved in your browser's local storage. If you clear your local storage or use a different browser/device, your presets will be lost. The maximum presets you can save is 10.</p>
-      <ul id="presetList" class="space-y-2 text-xs">
-        <!-- Presets will be dynamically added here -->
-      </ul>
+      <div class="mt-10">
+        <h3 class="text-md font-bold mb-2 opacity-80">Presets</h3>
+        <p class="mb-4 text-xs opacity-80">Note: Presets are saved in your browser's local storage. If you clear your local storage or use a different browser/device, your presets will be lost. The maximum presets you can save is 10.</p>
+        <ul id="presetList" class="space-y-2 text-xs">
+          <!-- Presets will be dynamically added here -->
+        </ul>
+      </div>
 
-      <h2 class="mt-8 text-lg font-bold mb-2">About</h2>
-      <p class="text-sm mb-2 opacity-80">I'm passionate about yoga and meditation, and I've noticed that many timers out there are overly fancy and complicated. As a minimalist, I prefer simplicity and clarity in everything. That’s why I created this timer — bringing all the essential features to a single page. This way, you can start timing with the least hassle and the quickest setup.</p>
-      <p class="text-sm mb-2 opacity-80">If you enjoy it, feel free to <button class="underline text-[#ff5a16]" onclick="copyPageUrl()">share inside timer</button> with your friends or <a href="https://ko-fi.com/adajiang666" target="_blank" class="underline text-[#ff5a16]">buy me a coffee</a> to support my work. Thanks so much!</p>
-      <p class="text-sm mb-2 opacity-80">I welcome any feedback or suggestions you may have. You can reach me at <a href="mailto:insidetimeronline@gmail.com" class="underline text-[#ff5a16]">insidetimeronline@gmail.com</a> </p>
+      {# about #}
+      <div class="mt-10">
+        <h2 class="mt-8 text-lg font-bold mb-2 underline decoration-double decoration-[#72a4f2]">About Inside Timer</h2>
+        <p class="text-sm mb-3 opacity-80">As a developer and meditation enthusiast, I created Inside Timer out of a genuine need for a more thoughtful meditation timer. Having explored some meditation apps and timers, I found that many were either overly complex or require you to pay for some features. This inspired me to develop Inside Timer - a meditation timer that embodies the principles of mindfulness in its very design.</p>
+        
+        <p class="text-sm mb-3 opacity-80">Inside Timer is built with modern web technologies, and all your data is stored in your browser's local storage. No privacy issues to worry about. Also as a developer, I understand the importance of clean, efficient code, just as in meditation, we seek clarity and simplicity. Every feature in this meditation timer is carefully considered and implemented with purpose - from the intuitive timer settings to the customizable presets that mark your practice.</p>
+        
+        <p class="text-sm mb-3 opacity-80">The development of Inside Timer is guided by meditation practitioners' needs. I regularly meditate using this timer myself, which helps me understand how to improve it from both a technical and practical perspective. The clean interface and straightforward controls reflect my belief that a meditation timer should support your practice without becoming a distraction.</p>
+        
+        <p class="text-sm mb-3 opacity-80">Inside Timer is more than just a meditation timer - it's a labor of love from one practitioner to another. I've intentionally kept it free and open for everyone, believing that tools for mindfulness should be accessible to all. The timer is constantly evolving, with updates and improvements based on the meditation community's feedback.</p>
+        
+        <p class="text-sm mb-3 opacity-80">If you find Inside Timer helpful in your meditation practice, please consider <button class="underline text-[#ff5a16]" onclick="copyPageUrl()">sharing it</button> with fellow practitioners. Your support through <a href="https://ko-fi.com/adajiang666" target="_blank" class="underline text-[#ff5a16]">buy me a coffee</a> helps maintain and improve this meditation timer, ensuring it remains a reliable companion for mindful moments.</p>
+        
+        <p class="text-sm mb-2 opacity-80">I deeply value your input in making Inside Timer better. Whether you have suggestions for new features or feedback about your meditation experience with the timer, please reach out to me at <a href="mailto:insidetimeronline@gmail.com" class="underline text-[#ff5a16]">insidetimeronline@gmail.com</a>. Together, we can continue to enhance this meditation timer for practitioners worldwide.</p>
+      </div>
     </div>
   </div>
 
