@@ -46,10 +46,10 @@ layout: base.njk
         cursor: pointer;
     }
 </style>
-<main class="w-screen h-screen bg-[var(--slider-color)] transition-colors duration-500 px-4 md:px-10 py-4 md:pt-16 text-md flex justify-center items-center" id="mainContainer">
-    <div class="w-full h-full overflow-hidden max-w-[800px] max-h-[800px] mx-auto">
+<main class="w-screen h-screen bg-[var(--slider-color)] transition-colors duration-500 p-4 md:py-10 text-md flex justify-center items-center" id="mainContainer">
+    <div class="w-full h-full overflow-hidden landscape:overflow-y-auto max-w-[800px] max-h-[800px] mx-auto p-4 md:py-8 bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl shadow-2xl">
         <!-- Timer Container -->
-        <div class="w-full h-full m-auto bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl px-4 py-8 shadow-2xl flex flex-col justify-around" id="settingsContainer">
+        <div class="w-full h-full m-auto flex flex-col justify-around" id="settingsContainer">
             <!-- Timer Display -->
             <div class="text-center">
                 {# <p class="text-4xl text-white opacity-80">Inside Timer</p> #}
@@ -108,13 +108,13 @@ layout: base.njk
                         <div>
                             <label class="text-xs text-white opacity-80 font-semibold">Starting/Ending Bell</label>
                             <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="startSound">
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
-                                <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
+                                <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
                             </div>
                         </div>
                         {# <div class="">
@@ -157,13 +157,13 @@ layout: base.njk
                     <div class="mt-4 font-fgr">
                         <label class="text-xs text-white opacity-80 font-semibold">Interval Bell</label>
                         <div class="flex overflow-x-auto space-x-2 mt-1 pb-2" id="intervalSound">
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
-                            <button class="w-12 h-12 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell01">Bell 1</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell02">Bell 2</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell03">Bell 3</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell04">Bell 4</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell05">Bell 5</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell06">Bell 6</button>
+                            <button class="w-10 h-10 flex-shrink-0 text-xs bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] animate-gradient-x bg-opacity-20 hover:bg-opacity-30 rounded-full text-white font-black transition-all flex items-center justify-center" data-sound="bell07">Bell 7</button>
                         </div>
                         
                     </div>
@@ -171,21 +171,21 @@ layout: base.njk
             </div>
 
             <!-- Control Buttons -->
-            <div class="flex justify-center gap-4 font-fgr">
+            <div class="landscape:pb-4 flex justify-center gap-4 font-fgr">
                 <button id="startButton" 
-                    class="px-4 py-2 bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
+                    class="px-4 sm:py-2 bg-gradient-to-br from-[#91b5bf] to-[#91b5bf] via-[var(--slider-color)] hover:scale-110 duration-300 rounded-full text-white font-semibold transition-all">
                     Start
                 </button>
                  
                 <button id="savePreset" 
-                    class="px-4 py-2 border-4 border-[var(--slider-color)] bg-white bg-opacity-80 hover:scale-110 duration-300 rounded-full text-[var(--slider-color)] font-semibold transition-all">
+                    class="px-4 sm:py-2 border-4 border-[var(--slider-color)] bg-white bg-opacity-80 hover:scale-110 duration-300 rounded-full text-[var(--slider-color)] font-semibold transition-all">
                     Save
                 </button>
             </div>
         </div>
 
         <!-- Timer Screen (Hidden by default) -->
-        <div id="timerScreen" class="hidden w-full h-full m-auto bg-black bg-opacity-30 backdrop-blur-lg rounded-2xl p-8 shadow-2xl flex flex-col justify-center items-center">
+        <div id="timerScreen" class="hidden w-full h-full m-auto p-8 flex flex-col justify-center items-center">
             <div class="text-center w-full">
                 <p class="text-4xl text-[var(--slider-color)] opacity-80 mb-8 font-fgr" id="timerScreenPhase">Meditation</p>
                 <p class="text-6xl md:text-8xl font-bold text-white mb-8" id="timerScreenDisplay">00:00</p>
