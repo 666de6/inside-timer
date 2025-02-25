@@ -148,7 +148,33 @@
         
         <p class="text-sm mb-2 opacity-80">I deeply value your input in making Inside Timer better. Whether you have suggestions for new features or feedback about your meditation experience with the timer, please reach out to me at <a href="mailto:insidetimeronline@gmail.com" class="underline text-[#ff5a16]">insidetimeronline@gmail.com</a>. Together, we can continue to enhance this meditation timer for practitioners worldwide.</p>
       </div>
+
+      {# links #}
+      <div>
+        <h2 class="mt-8 text-lg font-bold mb-2 underline decoration-double decoration-[#72a4f2]">
+          Support me by exploring my other projects
+        </h2>
+        <div class="flex flex-wrap justify-start gap-4 mt-6 text-dark opacity-80 text-sm">
+          <a href="https://signaturegenerator.pro/" target="_blank" class="underline text-xs">Signature Generator</a>
+          <a href="https://crypticwordle.today/" target="_blank" class="underline text-xs">Cryptic Wordle</a>
+          <a href="https://cdcalculator.cc/" target="_blank" class="underline text-xs">CD Calculator</a> 
+          <a href="https://boldtextgenerator.org/" target="_blank" class="underline text-xs">Bold Text Generator</a>
+          <a href="https://easystickermaker.com/" target="_blank" class="underline text-xs">AI Sticker Maker</a>
+          <a href="https://ai-animegenerator.org/" target="_blank" class="underline text-xs">AI Anime Generator</a>
+        </div>
+        
+      </div>
     </div>
+
+    <footer class="py-5 flex flex-col justify-center items-center text-center">
+      <p class="text-sm mt-10 text-[#72a4f2]">
+        &copy;
+        <span id="copyright"></span>
+        insidetimer.com
+        <span id="copyright-year">{{ translations.footer.copyright }}</span>        
+      </p>
+    </footer>
+
   </div>
 
   
@@ -168,24 +194,11 @@
 
     </div>
   </section> #}
-  {# <footer class="bg-green bg-opacity-80 py-5 flex flex-col justify-center items-center text-center">
-    <p class="text-xs mt-10">
-      &copy;
-      <span id="copyright"></span>
-      insidetimer.com
-      <span id="copyright-year">{{ translations.footer.copyright }}</span>
-      
-      <a href="{{ '/privacy' | localizeUrl(currentLang) }}" class="text-light">
-        {{ translations.footer.privacyPolicy }}
-      </a>
-      <a href="{{ translations.footer.gitlink }}" target="_blank" class="ml-4 text-light">
-        {{ translations.footer.github }}
-      </a>   
-
-    </p>
-  </footer> #}
+  
 
   <script>
+    document.getElementById('copyright').textContent = new Date().getFullYear();
+
     function adjustMainContainerHeight() {
         const mainContainer = document.getElementById('mainContainer');
         const viewportHeight = window.innerHeight;
